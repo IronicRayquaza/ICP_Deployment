@@ -1,30 +1,43 @@
-import { useState } from 'react';
-import { hello_backend } from 'declarations/hello_backend';
+import React from 'react';
+import './App.css';
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    hello_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <div className="App">
+      <Navbar />
+      <Hero />
+      <Footer />
+    </div>
+  );
+}
+
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <h1>My Website</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero">
+      <h2>Welcome to My ICP Project</h2>
+      <p>This is a Web3 transition from Web2.</p>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <p>&copy; 2024 Ironic</p>
+    </footer>
   );
 }
 
